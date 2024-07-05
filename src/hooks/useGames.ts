@@ -4,10 +4,10 @@ import { CanceledError } from "axios";
 
 
 
-interface Game {
+export interface Game {
     id: number;
-    // slug: string;
     name: string;
+    background_image: string;
   }
   
   interface FetchGamesResponse {
@@ -29,6 +29,7 @@ const useGames = () => {
         .get<FetchGamesResponse>("/games")
         .then((res) => {
           setGames(res.data.results);
+          console.log(res.data.results)
         })
         .catch((err) => {
             if(err instanceof CanceledError) return;

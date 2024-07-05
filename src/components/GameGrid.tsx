@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
-import { Card, CardHeader, CardBody, CardFooter, Text, Image, Stack, Divider, ButtonGroup, Button, Heading } from "@chakra-ui/react";
-import logo from "../assets/logo.png";
+import { SimpleGrid, Text } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
+import GameCard from "./GameCard";
 
 const GameGrid = () => {
-  const {games , error} = useGames();
+  const { games, error } = useGames();
   return (
     <>
       {error && <Text>{error}</Text>}
-      <ul>
-        {games.map((res) => <li key={res.id}>{res.name}</li>)}
-      </ul>
+      <SimpleGrid spacing={10} columns={{ sm:1, md:2, lg:3,xl:5 }} padding={10}>
+        {games.map((game) => (
+          <GameCard key={game.id} game={game} />
+        ))}
+      </SimpleGrid>
     </>
   );
 };
