@@ -54,7 +54,7 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area="main">
-          <Flex gap={"10px"} pl={"50px"}>
+          <Flex gap={"10px"} wrap={"wrap"} pl={"50px"}>
             <PlatformSelector
               selectedPlatform={selectedPlatform}
               onSelectPlatform={(platform) => setSelectedPlatform(platform)}
