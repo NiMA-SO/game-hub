@@ -13,16 +13,13 @@ import { useState } from "react";
 import PlatformIconList from "./PlatformIconList";
 import getCroppedImageUrl from "../services/image-url";
 
-
-
 interface Props {
   game: Game;
 }
 
 const GameCard = ({ game }: Props) => {
-  
   const [cardHover, setCardHover] = useState(false);
-  
+
   return (
     <Card
       onMouseOver={() => setCardHover(true)}
@@ -30,9 +27,14 @@ const GameCard = ({ game }: Props) => {
       _light={{ bg: "#e9e7e7" }}
       cursor={"pointer"}
       boxSizing="border-box"
-      width={{ sm:"100%", md:"300px", lg:"200px",xl:"300px" }} 
+      width={{ sm: "100%", md: "300px", lg: "200px", xl: "300px" }}
     >
-      {game.background_image && (<Image height={{sm:"300px",md:"200px",lg:"150px",xl:"200px"}} src={getCroppedImageUrl(game.background_image)} />)  } 
+      {/* {game.background_image && ( */}
+        <Image
+          height={{ sm: "300px", md: "200px", lg: "150px", xl: "200px" }}
+          src={getCroppedImageUrl(game.background_image)}
+        />
+      {/* )} */}
       <CardBody>
         <Stack
           display="Flex"
@@ -47,7 +49,9 @@ const GameCard = ({ game }: Props) => {
             flexWrap={"wrap"}
             h="30px"
           >
-            <PlatformIconList platforms={game.parent_platforms.map(p => p.platform)} />
+            <PlatformIconList
+              platforms={game.parent_platforms.map((p) => p.platform)}
+            />
           </HStack>
           <Text
             borderColor={"green"}
@@ -60,7 +64,7 @@ const GameCard = ({ game }: Props) => {
             _dark={{ color: "#6dc849" }}
             _light={{ color: "white", bg: "#6dc849", borderColor: "#6dc849" }}
           >
-            {game.metacritic}
+            {game.metacritic ? game.metacritic : 'null'}
           </Text>
         </Stack>
         <Heading
@@ -82,7 +86,7 @@ const GameCard = ({ game }: Props) => {
               <Text>Release Date :</Text>
               <Text>{game.released}</Text>
             </Stack>
-            <Divider _light={{borderColor:"gray"}} />
+            <Divider _light={{ borderColor: "gray" }} />
             <Stack
               display={"flex"}
               flexDirection={"row"}
@@ -91,11 +95,11 @@ const GameCard = ({ game }: Props) => {
               flexWrap={"wrap"}
             >
               <Text>Genres :</Text>
-              <Text wordBreak={"break-all"}>{game.genres.map((genre)=> (
-                genre.name + ","
-              ))}</Text>
+              <Text wordBreak={"break-all"}>
+                {game.genres.map((genre) => genre.name + ",")}
+              </Text>
             </Stack>
-            <Divider _light={{borderColor:"gray"}} />
+            <Divider _light={{ borderColor: "gray" }} />
             <Stack
               display={"flex"}
               flexDirection={"row"}
