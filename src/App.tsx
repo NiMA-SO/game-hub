@@ -47,7 +47,7 @@ function App() {
             <Heading
             as={'h2'}
               fontSize={"30px"}
-              mb={"10px"}
+              mb={"20px"}
               cursor={"pointer"}
               _hover={{ color: "lightgray" }}
               onClick={() => setGameQuery({...GameQuery , genre: null})}

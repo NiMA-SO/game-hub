@@ -38,9 +38,10 @@ const GenreList = ({selectedGenre,onSelectGenre} : Props ) => {
             width={"45px"}
             height={"40px"}
             rounded={"10px"}
+            objectFit={'cover'}
             src={getCroppedImageUrl(genre.image_background)}
           />
-          <Text  _hover={{color:"lightgray"}} fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'} onClick={() => onSelectGenre(genre)} key={genre.id}>{genre.name}</Text>
+          <Text  _hover={{color:"lightgray" , textDecoration: 'underline' }}  fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'} onClick={() => onSelectGenre(genre)} key={genre.id}>{genre.name}</Text>
         </ListItem>
       ))}
 
