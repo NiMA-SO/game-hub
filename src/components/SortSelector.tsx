@@ -17,9 +17,11 @@ const SortSelector = ({ onSelectSort, selectedSort }: Props) => {
     { value: "-rating", label: "Average Rating" },
   ];
 
+  const currentSortOrder = sortOrder.find(order => order.value === selectedSort)
+
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<FaAngleDown />}>Order By : {sortOrder.map(sort => selectedSort === sort.value && sort.label)}</MenuButton>
+      <MenuButton as={Button} rightIcon={<FaAngleDown />}>Order By : {currentSortOrder?.label || 'Relevance'}</MenuButton>
       <MenuList>
         {sortOrder.map((sort) => (
           <MenuItem

@@ -1,3 +1,4 @@
+import { GameQuery } from "../App";
 import SortSelector from "../components/SortSelector";
 import useData from "./useData";
 
@@ -27,20 +28,19 @@ export interface Game {
 }
 
 const useGames = (
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null,
-  selectedSort: string
+  gameQuery: GameQuery
 ) =>
   useData<Game>(
     "/games",
     {
       params: {
-        genres: selectedGenre?.id,
-        platforms: selectedPlatform?.id,
-        ordering: selectedSort ,
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder ,
+        search: gameQuery.searchText
       },
     },
-    [selectedGenre?.id, selectedPlatform?.id, selectedSort]
+    [gameQuery]
   );
 
 export default useGames;
