@@ -1,5 +1,4 @@
 import { GameQuery } from "../App";
-import SortSelector from "../components/SortSelector";
 import useData from "./useData";
 
 export interface Platform {

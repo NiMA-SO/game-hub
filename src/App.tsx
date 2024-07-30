@@ -1,8 +1,8 @@
-import { Flex, Grid, GridItem, Heading, HStack, Show, Text } from "@chakra-ui/react";
+import { Flex, Grid, GridItem, Heading,  Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Genre, Platform } from "./hooks/useGames";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
