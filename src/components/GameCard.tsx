@@ -12,6 +12,7 @@ import { Game } from "../hooks/useGames";
 import { useState } from "react";
 import PlatformIconList from "./PlatformIconList";
 import getCroppedImageUrl from "../services/image-url";
+import Emoji from "./Emoji";
 
 interface Props {
   game: Game;
@@ -72,7 +73,7 @@ const GameCard = ({ game }: Props) => {
           _hover={{ color: "lightgray" }}
           cursor={"pointer"}
         >
-          {game.name}
+          {game.name}<Emoji rating={game.rating_top} key={game.rating_top}/>
         </Heading>
         {cardHover && (
           <Stack mt={"20px"}>
