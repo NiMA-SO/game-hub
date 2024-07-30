@@ -16,6 +16,9 @@ const GameHeading = ({gameQuery}: Props) => {
       _hover={{ color: "lightgray" }}
     >
       {`${gameQuery.platform?.name || ''} ${gameQuery.genre?.name || ''}  Games` } 
+
+      {gameQuery.searchText ? <Text>{`search : ${gameQuery.searchText}`}</Text> :''}
+
     </Heading>
   );
 };

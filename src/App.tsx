@@ -36,7 +36,6 @@ function App() {
           area="nav"
           position={"sticky"}
           top={"0px"}
-          bg={"#1a202ca8"}
           _light={{ bg: "#ffffffbd" }}
           zIndex={"10"}
         >
@@ -60,9 +59,9 @@ function App() {
             />
           </GridItem>
         </Show>
-        <GridItem area="main">
+        <GridItem area="main" pl={"40px"}>
           <GameHeading gameQuery={GameQuery} />
-          <Flex gap={"10px"} wrap={"wrap"} pl={"50px"}>
+          <Flex gap={"10px"} wrap={"wrap"} ml={"40px"} mt={"20px"}>
             <PlatformSelector
               selectedPlatform={GameQuery.platform}
               onSelectPlatform={(platform) => setGameQuery({ ...GameQuery , platform})}
