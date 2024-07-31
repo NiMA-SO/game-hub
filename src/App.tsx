@@ -25,6 +25,8 @@ function App() {
       <Grid
         templateAreas={{
           base: `"nav" "main"`,
+          sm: `"nav nav" "main"`,
+          md: `"nav nav" "main"`,
           lg: `"nav nav" "aside main"`,
         }}
         templateColumns={{
@@ -38,6 +40,7 @@ function App() {
           top={"0px"}
           _light={{ bg: "#ffffffbd" }}
           zIndex={"10"}
+          _dark={{bg:"#111"}}
         >
           <NavBar onSearch={(searchText) => setGameQuery({ ...GameQuery , searchText})} />
         </GridItem>
@@ -59,7 +62,7 @@ function App() {
             />
           </GridItem>
         </Show>
-        <GridItem area="main" pl={"40px"}>
+        <GridItem area="main" pl={{md:"0" , lg:"40px"}}>
           <GameHeading gameQuery={GameQuery} />
           <Flex gap={"10px"} wrap={"wrap"} ml={"40px"} mt={"20px"}>
             <PlatformSelector
