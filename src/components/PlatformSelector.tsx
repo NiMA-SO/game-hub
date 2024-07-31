@@ -26,7 +26,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
             key={platform.id}
             onClick={() => onSelectPlatform(platform)}
           >
-            {selectedPlatform === platform && <TiTick/>}
+            {selectedPlatform === platform && <TiTick />}
             {platform.name}
           </MenuItem>
         ))}

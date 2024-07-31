@@ -1,25 +1,16 @@
-import {
-  HStack,
-  Image,
-  List,
-  ListItem,
-  Spinner,
-  Text,
-} from "@chakra-ui/react";
+import { HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
-import  { Genre } from "../hooks/useGames";
+import { Genre } from "../hooks/useGames";
 
-
-interface Props{
-  onSelectGenre: (genre:Genre)=> void;
+interface Props {
+  onSelectGenre: (genre: Genre) => void;
   selectedGenre: Genre | null;
 }
 
-const GenreList = ({selectedGenre,onSelectGenre} : Props ) => {
-  const { data, isLoading , error } = useGenres();
-    // const { games} = useGames();
-
+const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
+  const { data, isLoading, error } = useGenres();
+  // const { games} = useGames();
 
   return (
     <List display={"flex"} flexDirection={"column"} gap={"15px"}>
@@ -37,17 +28,31 @@ const GenreList = ({selectedGenre,onSelectGenre} : Props ) => {
             width={"45px"}
             height={"40px"}
             rounded={"10px"}
-            objectFit={'cover'}
+            objectFit={"cover"}
             src={getCroppedImageUrl(genre.image_background)}
           />
-          <Text  _hover={{color:"lightgray" , textDecoration: 'underline' }}  fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'} onClick={() => onSelectGenre(genre)} key={genre.id}>{genre.name}</Text>
+          <Text
+            _hover={{ color: "lightgray", textDecoration: "underline" }}
+            fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+            onClick={() => onSelectGenre(genre)}
+            key={genre.id}
+          >
+            {genre.name}
+          </Text>
         </ListItem>
       ))}
 
       {isLoading && (
-        <HStack display={"flex"} justifyContent={"center"} alignItems={"center"} width={"100%"} height={"350px"}>
-          <Spinner size='xl'/>
-        </HStack>)}
+        <HStack
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          width={"100%"}
+          height={"350px"}
+        >
+          <Spinner size="xl" />
+        </HStack>
+      )}
     </List>
   );
 };

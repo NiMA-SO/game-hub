@@ -4,7 +4,7 @@ import { TiTick } from "react-icons/ti";
 
 interface Props {
   onSelectSort: (sort: string) => void;
-  selectedSort: string  ;
+  selectedSort: string;
 }
 const SortSelector = ({ onSelectSort, selectedSort }: Props) => {
   // const { data ,error } = useSort()
@@ -12,16 +12,20 @@ const SortSelector = ({ onSelectSort, selectedSort }: Props) => {
     { value: "", label: "Relevance" },
     { value: "-added", label: "Date Added" },
     { value: "name", label: "Name" },
-    { value: "-released", label: "Release Date" },  
+    { value: "-released", label: "Release Date" },
     { value: "-metacritic", label: "Popularity" },
     { value: "-rating", label: "Average Rating" },
   ];
 
-  const currentSortOrder = sortOrder.find(order => order.value === selectedSort)
+  const currentSortOrder = sortOrder.find(
+    (order) => order.value === selectedSort
+  );
 
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<FaAngleDown />}>Order By : {currentSortOrder?.label || 'Relevance'}</MenuButton>
+      <MenuButton as={Button} rightIcon={<FaAngleDown />}>
+        Order By : {currentSortOrder?.label || "Relevance"}
+      </MenuButton>
       <MenuList>
         {sortOrder.map((sort) => (
           <MenuItem
@@ -29,10 +33,9 @@ const SortSelector = ({ onSelectSort, selectedSort }: Props) => {
             value={sort.value}
             onClick={() => onSelectSort(sort.value)}
           >
-            {selectedSort === sort.value && <TiTick/>}
+            {selectedSort === sort.value && <TiTick />}
             {sort.label}
           </MenuItem>
-          
         ))}
       </MenuList>
     </Menu>

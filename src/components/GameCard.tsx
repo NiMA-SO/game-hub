@@ -31,10 +31,10 @@ const GameCard = ({ game }: Props) => {
       width={{ sm: "100%", md: "300px", lg: "200px", xl: "300px" }}
     >
       {/* {game.background_image && ( */}
-        <Image
-          height={{ sm: "300px", md: "200px", lg: "150px", xl: "200px" }}
-          src={getCroppedImageUrl(game.background_image)}
-        />
+      <Image
+        height={{ sm: "300px", md: "200px", lg: "150px", xl: "200px" }}
+        src={getCroppedImageUrl(game.background_image)}
+      />
       {/* )} */}
       <CardBody>
         <Stack
@@ -65,7 +65,7 @@ const GameCard = ({ game }: Props) => {
             _dark={{ color: "#6dc849" }}
             _light={{ color: "white", bg: "#6dc849", borderColor: "#6dc849" }}
           >
-            {game.metacritic ? game.metacritic : 'null'}
+            {game.metacritic ? game.metacritic : "null"}
           </Text>
         </Stack>
         <Heading
@@ -73,7 +73,8 @@ const GameCard = ({ game }: Props) => {
           _hover={{ color: "lightgray" }}
           cursor={"pointer"}
         >
-          {game.name}<Emoji rating={game.rating_top} key={game.rating_top}/>
+          {game.name}
+          <Emoji rating={game.rating_top} key={game.rating_top} />
         </Heading>
         {cardHover && (
           <Stack mt={"20px"}>
