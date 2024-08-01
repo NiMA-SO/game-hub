@@ -4,8 +4,8 @@ const GameCardSkeleton = () => {
   return (
     <Card
       minWidth={"200px"}
-      width={{ sm: "250px", md: "300px", lg: "200px", xl: "300px" }}
-      height={{ sm: "350px", md: "300px", lg: "240px" }}
+      width={{ base: "250px",sm: "300px", md: "300px", lg: "200px", xl: "300px" }}
+      height={{ base: "250px",sm: "350px", md: "250px", lg: "240px" }}
       borderRadius={10}
       overflow={"hidden"}
       mx={"auto"}

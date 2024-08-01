@@ -28,11 +28,11 @@ const GameCard = ({ game }: Props) => {
       _light={{ bg: "#e9e7e7" }}
       cursor={"pointer"}
       boxSizing="border-box"
-      width={{ sm: "100%", md: "300px", lg: "200px", xl: "300px" }}
+      width={{  base: "270px",sm: "300px", md: "300px", lg: "200px", xl: "300px" }}
     >
       {/* {game.background_image && ( */}
       <Image
-        height={{ sm: "300px", md: "200px", lg: "150px", xl: "200px" }}
+        height={{ base: "250px",sm: "300px", md: "200px", lg: "150px", xl: "200px" }}
         src={getCroppedImageUrl(game.background_image)}
       />
       {/* )} */}
@@ -48,7 +48,7 @@ const GameCard = ({ game }: Props) => {
             flexDirection={"row"}
             alignItems={"center"}
             flexWrap={"wrap"}
-            h="30px"
+            mb={"10px"}
           >
             <PlatformIconList
               platforms={game.parent_platforms.map((p) => p.platform)}
