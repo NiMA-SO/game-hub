@@ -28,7 +28,7 @@ const GameCard = ({ game }: Props) => {
       _light={{ bg: "#e9e7e7" }}
       cursor={"pointer"}
       boxSizing="border-box"
-      width={{  base: "270px",sm: "300px", md: "300px", lg: "200px", xl: "300px" }}
+      width={{  base: "250px",sm: "300px", md: "300px", lg: "200px", xl: "300px" }}
     >
       {/* {game.background_image && ( */}
       <Image
