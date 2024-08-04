@@ -20,12 +20,14 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@react-icons/all-files": "^4.1.0",
+    "@tanstack/react-query": "4.28",
+    "@tanstack/react-query-devtools": "4.28",
     "axios": "^1.7.2",
     "framer-motion": "^11.2.13",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
-    "vercel": "^35.2.1"
+    "vercel": "^32.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

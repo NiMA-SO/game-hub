@@ -25,7 +25,7 @@ const GameGrid = ({ gameQuery }: Props) => {
         fontSize={"20px"}
         py={"20px"}
       >
-        {error}
+        {error.message}
       </Text>
     );
   return (
@@ -44,7 +44,7 @@ const GameGrid = ({ gameQuery }: Props) => {
               <GameCardSkeleton key={skeleton} />
             </GameCardContainer>
           ))}
-        {data.map((game) => (
+        {data?.results.map((game : any) => (
           <GameCardContainer key={game.id}>
             <GameCard key={game.id} game={game} />
           </GameCardContainer>

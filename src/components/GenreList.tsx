@@ -14,8 +14,8 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
 
   return (
     <List display={"flex"} flexDirection={"column"} gap={"15px"}>
-      {error && <Text>{error}</Text>}
-      {data.map((genre) => (
+      {error && <Text>{error.message}</Text>}
+      {data?.results.map((genre : any) => (
         <ListItem
           key={genre.id}
           display={"flex"}
