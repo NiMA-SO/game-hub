@@ -9,12 +9,12 @@ interface Props {
 }
 
 const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
-  const { data, isLoading, error } = useGenres();
+  const { data, isLoading } = useGenres();
   // const { games} = useGames();
 
   return (
     <List display={"flex"} flexDirection={"column"} gap={"15px"}>
-      {error && <Text>{error.message}</Text>}
+      {/* {error && <Text>{error.message}</Text>} */}
       {data?.results.map((genre : any) => (
         <ListItem
           key={genre.id}
