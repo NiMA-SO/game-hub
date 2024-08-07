@@ -1,4 +1,4 @@
-import { Button, HStack, SimpleGrid, Spinner } from "@chakra-ui/react";
+import { Button, HStack, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
@@ -11,25 +11,31 @@ interface Props {
 }
 
 const GameGrid = ({ gameQuery }: Props) => {
-  const { data, isLoading, isFetchingNextPage, fetchNextPage, hasNextPage } =
-    useGames(gameQuery);
+  const {
+    data,
+    isLoading,
+    isFetchingNextPage,
+    fetchNextPage,
+    hasNextPage,
+    error
+  } = useGames(gameQuery);
   const skeleton = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ];
 
-  // if (error)
-  //   return (
-  // <Text
-  //   textAlign={"center"}
-  //   mt={"10px"}
-  //   border={"1px"}
-  //   rounded={"10px"}
-  //   fontSize={"20px"}
-  //   py={"20px"}
-  // >
-  //   {error.message}
-  // </Text>
-  // );
+  if (error)
+    return (
+      <Text
+        textAlign={"center"}
+        mt={"10px"}
+        border={"1px"}
+        rounded={"10px"}
+        fontSize={"20px"}
+        py={"20px"}
+      >
+        {error.message}
+      </Text>
+    );
   return (
     <>
       <SimpleGrid
@@ -58,9 +64,14 @@ const GameGrid = ({ gameQuery }: Props) => {
         ))}
       </SimpleGrid>
       {hasNextPage && (
-        <HStack justify={'center'} mb={12} >
-          <Button onClick={() => fetchNextPage()} fontSize={"20px"} px={8} py={6}>
-            {isFetchingNextPage ?  'Loading...' : hasNextPage ? "Load More" : 'No More Cards'}
+        <HStack justify={"center"} mb={12}>
+          <Button
+            onClick={() => fetchNextPage()}
+            fontSize={"20px"}
+            px={8}
+            py={6}
+          >
+            {isFetchingNextPage ? 'Loading more...' : hasNextPage ? 'Load More' : 'No more posts'}
             {isFetchingNextPage && <Spinner ml={5}></Spinner>}
           </Button>
         </HStack>
