@@ -45,7 +45,7 @@ const GameGrid = ({ gameQuery }: Props) => {
         dataLength={fetchedGamesCount} 
         hasMore={!!hasNextPage}
         next={() => fetchNextPage()}
-        loader={<Text>loading...</Text>}
+        loader={''}
       >
         <SimpleGrid
           columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}

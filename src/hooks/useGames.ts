@@ -37,7 +37,14 @@ export interface Game {
 //   );
 const useGames = (gameQuery: GameQuery) =>
   useInfiniteQuery<FetchResponse<Game>, Error>({
-    queryKey: ["games", gameQuery],
+    queryKey: [
+      "games",
+      `${gameQuery.genre?.id ? `genre : ${gameQuery.genre.id}` : ""} ${
+        gameQuery.platform?.id ? `platform : ${gameQuery.platform.id}` : ""
+      } ${gameQuery.sortOrder ? `sort : ${gameQuery.sortOrder}` : ""} ${
+        gameQuery.searchText ? `search : ${gameQuery.searchText}` : ""
+      } `,
+    ],
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
@@ -45,14 +52,14 @@ const useGames = (gameQuery: GameQuery) =>
           parent_platforms: gameQuery.platform?.id,
           ordering: gameQuery.sortOrder,
           search: gameQuery.searchText,
-          page: pageParam
+          page: pageParam,
         },
       }),
-      staleTime: 1 * 60 * 1000,
-      // keepPreviousData: true,
-      getNextPageParam: (lastPage,allPages) => {
-        return lastPage.next ? allPages.length + 1 : undefined;
-      },
+    staleTime: 1 * 60 * 1000,
+    // keepPreviousData: true,
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.next ? allPages.length + 1 : undefined;
+    },
     // staleTime: 24 * 60 * 60 * 1000, // 24h
     // initialData: { count: games.length, results: games },
   });
