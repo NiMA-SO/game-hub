@@ -1,16 +1,14 @@
 import { HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
-import { Genre } from "../hooks/useGames";
+import useGameQueryStore from "../store";
 
-interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
-}
 
-const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
+const GenreList = () => {
   const { data, isLoading } = useGenres();
   // const { games} = useGames();
+  const selectedGenre = useGameQueryStore(s => s.gameQuery.genre?.id)
+  const setGenre = useGameQueryStore(s => s.setGenre)
 
   return (
     <List display={"flex"} flexDirection={"column"} gap={"15px"}>
@@ -33,8 +31,8 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
           />
           <Text
             _hover={{ color: "lightgray", textDecoration: "underline" }}
-            fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
-            onClick={() => onSelectGenre(genre)}
+            fontWeight={genre.id === selectedGenre ? "bold" : "normal"}
+            onClick={() => setGenre(genre)}
             key={genre.id}
           >
             {genre.name}

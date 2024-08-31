@@ -1,11 +1,13 @@
 import { Heading, Text } from "@chakra-ui/react";
-import { GameQuery } from "../App";
+import useGameQueryStore from "../store";
 
-interface Props {
-  gameQuery: GameQuery;
-}
 
-const GameHeading = ({ gameQuery }: Props) => {
+const GameHeading = () => {
+
+  const platform = useGameQueryStore(s => s.gameQuery.platform)
+  const genre = useGameQueryStore(s => s.gameQuery.genre)
+  const searchText = useGameQueryStore(s => s.gameQuery.searchText)
+
   return (
     <Heading
       as={"h1"}
@@ -15,12 +17,12 @@ const GameHeading = ({ gameQuery }: Props) => {
       cursor={"pointer"}
       _hover={{ color: "lightgray" }}
     >
-      {`${gameQuery.platform?.name || ""} ${
-        gameQuery.genre?.name || ""
+      {`${platform?.name || ""} ${
+        genre?.name || ""
       }  Games`}
 
-      {gameQuery.searchText ? (
-        <Text>{`search : ${gameQuery.searchText}`}</Text>
+      {searchText ? (
+        <Text>{`search : ${searchText}`}</Text>
       ) : (
         ""
       )}

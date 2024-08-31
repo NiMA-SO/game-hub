@@ -1,12 +1,9 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { FaAngleDown } from "react-icons/fa";
 import { TiTick } from "react-icons/ti";
+import useGameQueryStore from "../store";
 
-interface Props {
-  onSelectSort: (sort: string) => void;
-  selectedSort: string;
-}
-const SortSelector = ({ onSelectSort, selectedSort }: Props) => {
+const SortSelector = () => {
   // const { data ,error } = useSort()
   const sortOrder = [
     { value: "", label: "Relevance" },
@@ -16,6 +13,9 @@ const SortSelector = ({ onSelectSort, selectedSort }: Props) => {
     { value: "-metacritic", label: "Popularity" },
     { value: "-rating", label: "Average Rating" },
   ];
+
+  const selectedSort = useGameQueryStore(s => s.gameQuery.sortOrder)
+  const setSortOrder = useGameQueryStore(s => s.setSortOrder)
 
   const currentSortOrder = sortOrder.find(
     (order) => order.value === selectedSort
@@ -31,7 +31,7 @@ const SortSelector = ({ onSelectSort, selectedSort }: Props) => {
           <MenuItem
             key={sort.value}
             value={sort.value}
-            onClick={() => onSelectSort(sort.value)}
+            onClick={() => setSortOrder(sort.value)}
           >
             {selectedSort === sort.value && <TiTick />}
             {sort.label}
