@@ -31,6 +31,7 @@
     "react-icons": "^5.2.1",
     "react-infinite-scroll-component": "6.1",
     "react-infinite-scroller": "^1.2.6",
+    "react-router-dom": "^6.10.0",
     "semver": "^7.6.3",
     "tar": "^7.4.3",
     "undici": "^6.19.5",

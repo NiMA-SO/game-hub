@@ -1,35 +1,29 @@
-import { Flex, Grid, GridItem, Heading, Show } from "@chakra-ui/react";
-import NavBar from "./components/NavBar";
-import GameGrid from "./components/GameGrid";
-import GenreList from "./components/GenreList";
-import PlatformSelector from "./components/PlatformSelector";
-import SortSelector from "./components/SortSelector";
-import GameHeading from "./components/GameHeading";
-import useGameQueryStore from "./store";
+import { Grid, GridItem, Show, Heading, Flex } from "@chakra-ui/react"
+import GameGrid from "../components/GameGrid"
+import GameHeading from "../components/GameHeading"
+import GenreList from "../components/GenreList"
+// import NavBar from "../components/NavBar"
+import PlatformSelector from "../components/PlatformSelector"
+import SortSelector from "../components/SortSelector"
+import useGameQueryStore from "../store"
 
+const HomePage = () => {
+    const setGenre = useGameQueryStore(s => s.setGenre)
 
-
-function App() {
-
-  const setGenre = useGameQueryStore(s => s.setGenre)
-
-
-
+    
   return (
     <>
-      <Grid
+        <Grid
         templateAreas={{
-          base: `"nav" "main"`,
-          sm: `"nav nav" "main"`,
-          md: `"nav nav" "main"`,
-          lg: `"nav nav" "aside main"`,
+          base: `"main"`,
+          lg: `"aside main"`,
         }}
         templateColumns={{
           base: "1fr",
           lg: "200px",
         }}
       >
-        <GridItem
+        {/* <GridItem
           area="nav"
           position={"sticky"}
           top={"0px"}
@@ -38,7 +32,7 @@ function App() {
           _dark={{ bg: "#111" }}
         >
           <NavBar/>
-        </GridItem>
+        </GridItem> */}
         <Show above="lg">
           <GridItem area="aside" pl={"30px"}>
             <Heading
@@ -70,7 +64,7 @@ function App() {
         </GridItem>
       </Grid>
     </>
-  );
+  )
 }
 
-export default App;
+export default HomePage
