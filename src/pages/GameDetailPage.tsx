@@ -7,9 +7,9 @@ import {
   Icon,
   Image,
   Spinner,
-  Text,
 } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
+import ExpandableText from "../components/ExpandableText";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -22,6 +22,7 @@ const GameDetailPage = () => {
       </HStack>
     );
   if (error || !game) throw error;
+
 
   return (
     <>
@@ -42,7 +43,7 @@ const GameDetailPage = () => {
           <Icon as={FaArrowLeft} />
         </Box>
         <Heading>{game.name}</Heading>
-        <Text wordBreak={"break-all"}>{game.description_raw}</Text>
+        <ExpandableText>{game.description_raw}</ExpandableText>
         <Image
           src={game.background_image}
           width={"500px"}
