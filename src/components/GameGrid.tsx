@@ -1,5 +1,6 @@
 import { Button, HStack, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
-import useGames, { Game } from "../hooks/useGames";
+import useGames from "../hooks/useGames";
+import { Game } from "../entities/Game";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
@@ -51,6 +52,7 @@ const GameGrid = () => {
           display={"flex"}
           flexWrap={"wrap"}
           flexDirection={"row"}
+          justifyContent={'center'}
           gap={"20px"}
         >
           {isLoading &&
