@@ -1,7 +1,7 @@
 import {
   Card,
   CardBody,
-  Divider,
+  // Divider,
   Heading,
   HStack,
   Image,
@@ -9,7 +9,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Game } from "../hooks/useGames";
-import { useState } from "react";
+// import { useState } from "react";
 import PlatformIconList from "./PlatformIconList";
 import getCroppedImageUrl from "../services/image-url";
 import Emoji from "./Emoji";
@@ -19,16 +19,19 @@ interface Props {
 }
 
 const GameCard = ({ game }: Props) => {
-  const [cardHover, setCardHover] = useState(false);
+  // const [cardHover, setCardHover] = useState(false);
 
   return (
     <Card
-      onMouseOver={() => setCardHover(true)}
-      onMouseOut={() => setCardHover(false)}
+      // onMouseOver={() => setCardHover(true)}
+      // onMouseOut={() => setCardHover(false)}
+      overflow={'hidden'}
       _light={{ bg: "#e9e7e7" }}
       cursor={"pointer"}
       boxSizing="border-box"
       width={{  base: "250px",sm: "300px", md: "300px", lg: "200px", xl: "300px" }}
+      transition={'.2s'}
+      _hover={{ transform: "scale(1.05)" }}
     >
       {/* {game.background_image && ( */}
       <Image
@@ -76,7 +79,7 @@ const GameCard = ({ game }: Props) => {
           {game.name}
           <Emoji rating={game.rating_top} key={game.rating_top} />
         </Heading>
-        {cardHover && (
+        {/* {cardHover && (
           <Stack mt={"20px"}>
             <Stack
               display={"flex"}
@@ -113,7 +116,7 @@ const GameCard = ({ game }: Props) => {
               <Text>{game.released}</Text>
             </Stack>
           </Stack>
-        )}
+        )} */}
       </CardBody>
     </Card>
   );

@@ -1,11 +1,11 @@
 import { Button, HStack, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
-import useGames from "../hooks/useGames";
+import useGames, { Game } from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-
+import { Link } from "react-router-dom";
 
 const GameGrid = () => {
   // const gameQuery = useGameQueryStore(s => s.gameQuery)
@@ -39,11 +39,11 @@ const GameGrid = () => {
     data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
   return (
     <>
-      <InfiniteScroll 
-        dataLength={fetchedGamesCount} 
+      <InfiniteScroll
+        dataLength={fetchedGamesCount}
         hasMore={!!hasNextPage}
         next={() => fetchNextPage()}
-        loader={''}
+        loader={""}
       >
         <SimpleGrid
           columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
@@ -62,30 +62,27 @@ const GameGrid = () => {
 
           {data?.pages.map((page, index) => (
             <React.Fragment key={index}>
-              {page?.results.map((game: any) => (
-                <GameCardContainer key={game.id}>
-                  <GameCard key={game.id} game={game} />
-                </GameCardContainer>
+              {page?.results.map((game: Game) => (
+                <Link to={`/games/${game.slug}`}>
+                  <GameCardContainer key={game.id}>
+                    <GameCard key={game.id} game={game} />
+                  </GameCardContainer>
+                </Link>
               ))}
             </React.Fragment>
           ))}
         </SimpleGrid>
       </InfiniteScroll>
-        <HStack justify={"center"} mb={12}>
-          <Button
-            onClick={() => fetchNextPage()}
-            fontSize={"20px"}
-            px={8}
-            py={6}
-          >
-            {isFetchingNextPage
-              ? "Loading more..."
-              : hasNextPage
-              ? "Load More"
-              : "No more posts"}
-            {isFetchingNextPage && <Spinner ml={5}></Spinner>}
-          </Button>
-        </HStack>
+      <HStack justify={"center"} mb={12}>
+        <Button onClick={() => fetchNextPage()} fontSize={"20px"} px={8} py={6}>
+          {isFetchingNextPage
+            ? "Loading more..."
+            : hasNextPage
+            ? "Load More"
+            : "No more posts"}
+          {isFetchingNextPage && <Spinner ml={5}></Spinner>}
+        </Button>
+      </HStack>
     </>
   );
 };
