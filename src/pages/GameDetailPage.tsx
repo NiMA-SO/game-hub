@@ -5,11 +5,11 @@ import {
   Heading,
   HStack,
   Icon,
-  Image,
   Spinner,
 } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 import ExpandableText from "../components/ExpandableText";
+import GameAttributes from "../components/GameAttributes";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -23,10 +23,17 @@ const GameDetailPage = () => {
     );
   if (error || !game) throw error;
 
-
   return (
     <>
-      <Box padding={5}>
+      <Box
+        backgroundColor={"#121212cf"}
+        _light={{ backgroundColor: "#ffffffcf" }}
+        m={{ base: "0", sm: "0px", md: 10 }}
+        rounded={30}
+        padding={{ base: "20px", sm: "20px", md: 5 }}
+        position={"relative"}
+        height={"80vh"}
+      >
         <Box
           padding={"10px"}
           rounded={"50%"}
@@ -36,21 +43,16 @@ const GameDetailPage = () => {
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}
-          mb={'20px'}
-          cursor={'pointer'}
+          mb={"20px"}
+          cursor={"pointer"}
+          // position={'fixed'}
           onClick={() => history.back()}
         >
           <Icon as={FaArrowLeft} />
         </Box>
         <Heading>{game.name}</Heading>
         <ExpandableText>{game.description_raw}</ExpandableText>
-        <Image
-          src={game.background_image}
-          width={"500px"}
-          mx={"auto"}
-          mt={"40px"}
-          rounded={"10px"}
-        ></Image>
+        <GameAttributes game={game} />
       </Box>
     </>
   );

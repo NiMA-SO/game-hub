@@ -1,3 +1,6 @@
+import { Genre } from "./Genre";
+import { Platform } from "./Platform";
+
 export interface GameDetail {
   name: string;
   description: string;
@@ -5,4 +8,12 @@ export interface GameDetail {
   metacritic: number;
   released: string;
   background_image: string;
+  parent_platforms: { platform : Platform }[];
+  genres: Genre[];
+  publishers: Publishers[];
+}
+
+interface Publishers{
+  id: number;
+  name: string;
 }
