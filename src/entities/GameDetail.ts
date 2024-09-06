@@ -2,6 +2,7 @@ import { Genre } from "./Genre";
 import { Platform } from "./Platform";
 
 export interface GameDetail {
+  id:number;
   name: string;
   description: string;
   description_raw: string;
