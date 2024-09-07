@@ -8,8 +8,6 @@ interface Props {
 const GameScreenshots = ({ gameId }: Props) => {
   const { data } = useScreenShot(gameId);
 
-  console.log(data);
-
   const screenShots = data?.results;
 
   return (

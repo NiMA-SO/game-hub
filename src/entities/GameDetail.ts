@@ -1,5 +1,5 @@
-import { Genre } from "./Genre";
-import { Platform } from "./Platform";
+import Genre from "./Genre";
+import Platform from "./Platform";
 
 export interface GameDetail {
   id:number;
