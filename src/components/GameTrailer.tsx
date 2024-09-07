@@ -17,7 +17,7 @@ const GameTrailer = ({ gameId }: Props) => {
   const first = data?.results[0];
 
   return first ? (
-    <Box pb={10} rounded={30} overflow={'hidden'}>
+    <Box mb={10} rounded={10} overflow={'hidden'}>
           <VideoPlayer videoUrl={first.data[480]} poster={first.perview}/>
     </Box>
   ) : null;
